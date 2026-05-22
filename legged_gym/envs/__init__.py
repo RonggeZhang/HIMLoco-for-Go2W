@@ -32,9 +32,15 @@ from legged_gym import LEGGED_GYM_ROOT_DIR, LEGGED_GYM_ENVS_DIR
 from .base.legged_robot import LeggedRobot
 from legged_gym.envs.go2w.go2w_config import GO2WRoughCfg,GO2WRoughCfgPPO
 from .go2w.go2w_robot import Go2w
+from legged_gym.envs.ddogw.Ddogw_config import DdogwRoughCfg, DdogwRoughCfgPPO
+from .ddogw.Ddogw_robot import Ddogw
 
 import os
 
 from legged_gym.utils.task_registry import task_registry
 
 task_registry.register( "go2w",Go2w,GO2WRoughCfg(),GO2WRoughCfgPPO())
+_ddogw_cfg = DdogwRoughCfg()
+_ddogw_cfg_ppo = DdogwRoughCfgPPO()
+task_registry.register("Ddogw", Ddogw, _ddogw_cfg, _ddogw_cfg_ppo)
+task_registry.register("ddogw", Ddogw, _ddogw_cfg, _ddogw_cfg_ppo)

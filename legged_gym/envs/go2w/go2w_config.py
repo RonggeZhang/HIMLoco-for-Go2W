@@ -34,7 +34,7 @@ class GO2WRoughCfg(LeggedRobotCfg):
 
     # 训练
     class env(LeggedRobotCfg.env):
-        num_envs = 4096
+        num_envs = 2048
         num_one_step_observations = 3 + 3 + 3 + 16 + 16 + 16
         num_observations = num_one_step_observations * 6
         num_one_step_privileged_obs = num_one_step_observations + 3 + 3 + 11 * 17 + 12
