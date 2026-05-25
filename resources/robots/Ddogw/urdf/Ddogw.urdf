@@ -152,12 +152,12 @@
     </collision>
   </link>
 
-  <joint name="FL_foot_joint" type="revolute" dont_collapse="true">
+  <joint name="FL_foot_joint" type="revolute">
     <origin xyz="0 0 -0.219" rpy="0 0 0" />
     <parent link="FL_calf" />
     <child link="FL_foot" />
     <axis xyz="0 1 0" />
-    <limit effort="27" velocity="27" />
+    <limit lower="-999999" upper="999999" effort="27" velocity="27" />
   </joint>
 
 
@@ -290,12 +290,12 @@
     </collision>
   </link>
 
-  <joint name="FR_foot_joint" type="revolute" dont_collapse="true">
+  <joint name="FR_foot_joint" type="revolute">
     <origin xyz="0 0 -0.219" rpy="0 0 0" />
     <parent link="FR_calf" />
     <child link="FR_foot" />
     <axis xyz="0 1 0" />
-    <limit effort="27" velocity="27" />
+    <limit lower="-999999" upper="999999" effort="27" velocity="27" />
   </joint>
 
 
@@ -424,12 +424,12 @@
       </geometry>
     </collision>
   </link>
-  <joint name="RL_foot_joint" type="revolute" dont_collapse="true">
+  <joint name="RL_foot_joint" type="revolute">
     <origin xyz="0 0 -0.219" rpy="0 0 0" />
     <parent link="RL_calf" />
     <child link="RL_foot" />
     <axis xyz="0 1 0" />
-    <limit effort="27" velocity="27" />
+    <limit lower="-999999" upper="999999" effort="27" velocity="27" />
   </joint>
 
   <link name="RR_hip">
@@ -561,11 +561,11 @@
     </collision>
   </link>
 
-  <joint name="RR_foot_joint" type="revolute" dont_collapse="true">
+  <joint name="RR_foot_joint" type="revolute">
     <origin xyz="0 0 -0.219" rpy="0 0 0" />
     <parent link="RR_calf" />
     <child link="RR_foot" />
     <axis xyz="0 1 0" />
-    <limit effort="27" velocity="27" />
+    <limit lower="-999999" upper="999999" effort="27" velocity="27" />
   </joint>
 </robot>
