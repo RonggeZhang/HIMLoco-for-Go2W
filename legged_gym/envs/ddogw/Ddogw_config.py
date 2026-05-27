@@ -9,7 +9,7 @@ from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobot
 class DdogwRoughCfg(LeggedRobotCfg):
 
     class env(LeggedRobotCfg.env):
-        num_envs = 2048
+        num_envs = 4096
         num_one_step_observations = 3 + 3 + 3 + 16 + 16 + 16
         num_observations = num_one_step_observations * 6
         num_one_step_privileged_obs = num_one_step_observations + 3 + 3 + 11 * 17 + 12
@@ -27,7 +27,7 @@ class DdogwRoughCfg(LeggedRobotCfg):
         max_curriculum = 1.5
         num_commands = 4
         resampling_time = 10.
-        heading_command = True
+        heading_command = False
 
         class ranges:
             lin_vel_x = [-1.0, 1.0]
@@ -36,7 +36,7 @@ class DdogwRoughCfg(LeggedRobotCfg):
             heading = [-3.14, 3.14]
 
     class init_state(LeggedRobotCfg.init_state):
-        pos = [0.0, 0.0, 0.42]
+        pos = [0.0, 0.0, 0.45]
         default_joint_angles = {
             'FL_hip_joint': 0.0,
             'RL_hip_joint': 0.0,
@@ -73,12 +73,18 @@ class DdogwRoughCfg(LeggedRobotCfg):
         name = "Ddogw"
         foot_name = "foot"
         wheel_name = ["foot"]
-        penalize_contacts_on = ["thigh", "calf", "base"]
-        terminate_after_contacts_on = ['base_link']
+        penalize_contacts_on = ["thigh", "calf", "base", "motor"]
+        terminate_after_contacts_on = ['base']
         priviledge_contacts_on = ["thigh", "calf", "base"]
         self_collisions = 1
         replace_cylinder_with_capsule = False
         flip_visual_attachments = False
+
+    class domain_rand(LeggedRobotCfg.domain_rand):
+        # 略减弱随机扰动，便于先学会抬腿上台阶
+        push_interval_s = 20
+        max_push_vel_xy = 0.8
+        disturbance_range = [-20.0, 20.0]
 
     class rewards(LeggedRobotCfg.rewards):
         class scales:
@@ -92,6 +98,7 @@ class DdogwRoughCfg(LeggedRobotCfg):
             stand_still = -0.5
             collision = -1.0
             feet_stumble = -0.1
+            # stair_bounce = -0.2
             action_rate = -0.01
             torques = -5.0e-4
             dof_vel = -1e-7
@@ -99,11 +106,14 @@ class DdogwRoughCfg(LeggedRobotCfg):
             run_still = -0.05
 
         only_positive_rewards = True
+        # 轮子撞立边后保留的仿真步数（decimation 后约 stumble_memory_steps * dt）
+        stumble_memory_steps = 20
+        cmd_forward_threshold = 0.2
         tracking_sigma = 0.25
         soft_dof_pos_limit = 1.
         soft_dof_vel_limit = 1.
         soft_torque_limit = 1.
-        base_height_target = 0.38
+        base_height_target = 0.40
         max_contact_force = 100.
 
 

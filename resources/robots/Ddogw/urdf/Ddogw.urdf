@@ -79,7 +79,7 @@
     <collision>
       <origin xyz="-0.015 0.0 -0.105" rpy="0.0 0 0" />
       <geometry>
-        <cylinder length="0.12" radius="0.02"/>
+        <cylinder length="0.10" radius="0.018"/>
       </geometry>
     </collision>
   </link>
@@ -95,7 +95,7 @@
   <link name="FL_calf">
     <inertial>
       <origin xyz="0.001726 -0.01621 -0.191896" rpy="0 0 0" />
-      <mass value="0.87" />
+      <mass value="0.37" />
       <inertia ixx="0.004225328" ixy="0.000032167" ixz="-0.000103096" iyy="0.004090407" iyz="-0.000385909" izz="0.000762904" />
     </inertial>
     <visual>
@@ -113,13 +113,26 @@
         <cylinder length="0.06" radius="0.015"/>
       </geometry>
     </collision>
+  </link>
+
+  <link name="FL_foot_motor">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.50" />
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.0015" iyz="0" izz="0.001" />
+    </inertial>
     <collision>
-      <origin xyz="0.018 -0.02 -0.22" rpy="1.57 0 0" />
+      <origin xyz="0 0 0" rpy="1.57 0 0" />
       <geometry>
-        <cylinder length="0.07" radius="0.035"/>
+        <cylinder length="0.05" radius="0.03"/>
       </geometry>
     </collision>
   </link>
+  <joint name="FL_foot_motor_joint" type="fixed" dont_collapse="true">
+    <origin xyz="0 -0.01 -0.219" rpy="0 0 0" />
+    <parent link="FL_calf" />
+    <child link="FL_foot_motor" />
+  </joint>
 
   <joint name="FL_calf_joint" type="revolute">
     <origin xyz="0 0 -0.2" rpy="0 0 0" />
@@ -216,7 +229,7 @@
     <collision>
       <origin xyz="-0.015 0.0 -0.105" rpy="0.0 0 0" />
       <geometry>
-        <cylinder length="0.12" radius="0.02"/>
+        <cylinder length="0.10" radius="0.018"/>
       </geometry>
     </collision>
   </link>
@@ -233,7 +246,7 @@
   <link name="FR_calf">
     <inertial>
       <origin xyz="0.001726 0.01621 -0.191896" rpy="0 0 0" />
-      <mass value="0.87" />
+      <mass value="0.37" />
       <inertia ixx="0.004225328" ixy="0.000032167" ixz="-0.000103096" iyy="0.004090407" iyz="0.000385909" izz="0.000762904" />
     </inertial>
     <visual>
@@ -251,13 +264,26 @@
         <cylinder length="0.06" radius="0.015"/>
       </geometry>
     </collision>
+  </link>
+
+  <link name="FR_foot_motor">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.50" />
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.0015" iyz="0" izz="0.001" />
+    </inertial>
     <collision>
-      <origin xyz="0.018 0.02 -0.22" rpy="1.57 0 0" />
+      <origin xyz="0 0 0" rpy="1.57 0 0" />
       <geometry>
-        <cylinder length="0.07" radius="0.035"/>
+        <cylinder length="0.05" radius="0.03"/>
       </geometry>
     </collision>
   </link>
+  <joint name="FR_foot_motor_joint" type="fixed" dont_collapse="true">
+    <origin xyz="0 0.01 -0.219" rpy="0 0 0" />
+    <parent link="FR_calf" />
+    <child link="FR_foot_motor" />
+  </joint>
 
   <joint name="FR_calf_joint" type="revolute">
     <origin xyz="0 0 -0.2" rpy="0 0 0" />
@@ -352,7 +378,7 @@
     <collision>
       <origin xyz="-0.015 0.0 -0.105" rpy="0.0 0 0" />
       <geometry>
-        <cylinder length="0.12" radius="0.02"/>
+        <cylinder length="0.10" radius="0.018"/>
       </geometry>
     </collision>
   </link>
@@ -368,7 +394,7 @@
   <link name="RL_calf">
     <inertial>
       <origin xyz="0.001726 -0.01621 -0.191896" rpy="0 0 0" />
-      <mass value="0.87" />
+      <mass value="0.37" />
       <inertia ixx="0.004225328" ixy="-0.000032167" ixz="-0.000103096" iyy="0.004090407" iyz="-0.000385909" izz="0.000762904" />
     </inertial>
     <visual>
@@ -386,13 +412,26 @@
         <cylinder length="0.06" radius="0.015"/>
       </geometry>
     </collision>
+  </link>
+
+  <link name="RL_foot_motor">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.50" />
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.0015" iyz="0" izz="0.001" />
+    </inertial>
     <collision>
-      <origin xyz="0.018 -0.02 -0.22" rpy="1.57 0 0" />
+      <origin xyz="0 0 0" rpy="1.57 0 0" />
       <geometry>
-        <cylinder length="0.07" radius="0.035"/>
+        <cylinder length="0.05" radius="0.03"/>
       </geometry>
     </collision>
   </link>
+  <joint name="RL_foot_motor_joint" type="fixed" dont_collapse="true">
+    <origin xyz="0 -0.01 -0.219" rpy="0 0 0" />
+    <parent link="RL_calf" />
+    <child link="RL_foot_motor" />
+  </joint>
 
   <joint name="RL_calf_joint" type="revolute">
     <origin xyz="0 0 -0.2" rpy="0 0 0" />
@@ -487,7 +526,7 @@
     <collision>
       <origin xyz="-0.015 0.0 -0.105" rpy="0.0 0 0" />
       <geometry>
-        <cylinder length="0.12" radius="0.02"/>
+        <cylinder length="0.10" radius="0.018"/>
       </geometry>
     </collision>
   </link>
@@ -503,7 +542,7 @@
   <link name="RR_calf">
     <inertial>
       <origin xyz="0.001726 0.01621 -0.191896" rpy="0 0 0" />
-      <mass value="0.87" />
+      <mass value="0.37" />
       <inertia ixx="0.004225328" ixy="0.000032167" ixz="-0.000103096" iyy="0.004090407" iyz="0.000385909" izz="0.000762904" />
     </inertial>
     <visual>
@@ -522,13 +561,26 @@
         <cylinder length="0.06" radius="0.015"/>
       </geometry>
     </collision>
+  </link>
+
+  <link name="RR_foot_motor">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.50" />
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.0015" iyz="0" izz="0.001" />
+    </inertial>
     <collision>
-      <origin xyz="0.018 0.02 -0.22" rpy="1.57 0 0" />
+      <origin xyz="0 0 0" rpy="1.57 0 0" />
       <geometry>
-        <cylinder length="0.07" radius="0.035"/>
+        <cylinder length="0.05" radius="0.03"/>
       </geometry>
     </collision>
   </link>
+  <joint name="RR_foot_motor_joint" type="fixed" dont_collapse="true">
+    <origin xyz="0 0.01 -0.219" rpy="0 0 0" />
+    <parent link="RR_calf" />
+    <child link="RR_foot_motor" />
+  </joint>
 
   <joint name="RR_calf_joint" type="revolute">
     <origin xyz="0 0 -0.2" rpy="0 0 0" />
